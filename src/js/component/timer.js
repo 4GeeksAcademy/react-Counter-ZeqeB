@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock } from '@fortawesome/free-regular-svg-icons'; 
 const Timer = () => {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -28,13 +28,23 @@ const Timer = () => {
     setHours(0);
   }
 
-  const formatTime = (time) => (time < 10 ? `0${time}` : time);
+  const formatDigits = (time) => {
+    return time
+      .toString()
+      .padStart(2, '0') 
+      .split('')
+      .map((digit, index) => (
+        <span key={index} className="mx-1">{digit}</span>
+      )); 
+  };
 
   return (
     <div className="d-flex align-items-center justify-content-center p-3 bg-dark rounded">
-      <i className="fas fa-clock fa-2x text-light mr-3"></i> {/* Ícono blanco */}
-      <span className="h3 mb-0 text-light">
-        {formatTime(hours)}:{formatTime(minutes)}:{formatTime(seconds)}
+      <FontAwesomeIcon icon={faClock} size="2x" className="text-light mr-3" />
+      <span className="h3 mb-0 text-light d-flex">
+        <span className='mx-2'>{formatDigits(hours)}</span>:
+        <span className='mx-2'>{formatDigits(minutes)}</span>:
+        <span className='mx-2'>{formatDigits(seconds)}</span>
       </span>
     </div>
   );

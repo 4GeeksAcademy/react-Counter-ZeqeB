@@ -6,8 +6,8 @@ import '@fortawesome/fontawesome-free/css/all.min.css'; // importé fontawesome 
 // include your styles into the webpack bundle
 import "../styles/index.css";
 
+
 //import your own components
-import Home from "./component/home.jsx";
 import Timer from "./component/timer.js";
 
 //render your react application
